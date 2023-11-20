@@ -29,7 +29,7 @@ model Professors {
 model User {
   id             String           @id @default(cuid())
   email          String           @unique
-  registration   String           @unique
+  // registration   String           @unique
   campuscode     String?
   StudentClasses StudentClasses[]
 

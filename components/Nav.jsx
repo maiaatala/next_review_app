@@ -6,9 +6,8 @@ import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
-	const [isUserLogged, setIsUserLogged] = useState(true);
 	const [providers, setProviders] = useState(null);
-
+	const { data: session } = useSession();
 	useEffect(() => {
 		const fetchProviders = async () => {
 			const response = await getProviders();
@@ -26,7 +25,7 @@ const Nav = () => {
 			</Link>
 			{/* desktop nav */}
 			<div className="sm:flex hidden">
-				{isUserLogged ? (
+				{session?.user ? (
 					<div className="flex gap-3 md:gap-5">
 						<Link href="/classes" className="black_btn">
 							Aulas
