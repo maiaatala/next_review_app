@@ -9,3 +9,58 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model ClassCodes {
+  id       String    @id @default(cuid())
+  code     String
+  semester String
+  major    String
+  Classes  Classes[]
+}
+
+model Professors {
+  id          String    @id @default(cuid())
+  name        String
+  photoURL    String?
+  description String?
+  Classes     Classes[]
+}
+
+model User {
+  id             String           @id @default(cuid())
+  email          String           @unique
+  registration   String           @unique
+  campuscode     String?
+  StudentClasses StudentClasses[]
+
+  @@map(name: "users")
+}
+
+model Classes {
+  id             String           @id @default(cuid())
+  clasCode       ClassCodes       @relation(fields: [classCodeId], references: [id])
+  professor      Professors       @relation(fields: [professorId], references: [id])
+  label          String
+  startDate      DateTime
+  endDate        DateTime
+  classCodeId    String
+  professorId    String
+  StudentClasses StudentClasses[]
+}
+
+model StudentClasses {
+  id        String     @id @default(cuid())
+  student   User       @relation(fields: [studentId], references: [id])
+  class     Classes    @relation(fields: [classId], references: [id])
+  studentId String
+  classId   String
+  Feedback  Feedback[]
+}
+
+model Feedback {
+  id             String         @id @default(cuid())
+  studentClass   StudentClasses @relation(fields: [studentClassId], references: [id])
+  review         Float
+  comment        String?
+  studentClassId String
+}
