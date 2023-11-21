@@ -31,7 +31,7 @@ model User {
   email          String           @unique
   // registration   String           @unique
   campuscode     String?
-  StudentClasses StudentClasses[]
+  feedbacks      Feedbacks[]
 
   @@map(name: "users")
 }
@@ -45,22 +45,15 @@ model Classes {
   endDate        DateTime
   classCodeId    String
   professorId    String
-  StudentClasses StudentClasses[]
+  feedbacks      Feedbacks[]
 }
 
-model StudentClasses {
+model Feedbacks {
   id        String     @id @default(cuid())
   student   User       @relation(fields: [studentId], references: [id])
   class     Classes    @relation(fields: [classId], references: [id])
   studentId String
   classId   String
-  Feedback  Feedback[]
-}
-
-model Feedback {
-  id             String         @id @default(cuid())
-  studentClass   StudentClasses @relation(fields: [studentClassId], references: [id])
-  review         Float
-  comment        String?
-  studentClassId String
+  review    Float
+  comment   String?
 }
