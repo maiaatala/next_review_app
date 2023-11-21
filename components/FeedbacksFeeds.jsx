@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 
 const PromptCardList = ({ data }) => {
-	console.log(data)
 	return (
 		<div className="mt-16 prompt_layout">
 			{data?.map((feedbackData) => {

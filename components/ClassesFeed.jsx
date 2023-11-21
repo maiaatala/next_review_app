@@ -17,6 +17,8 @@ const PromptCardList = ({ data }) => {
 
 				return (
 					<Card key={classData.id} title={classData.label}
+					grade={classData.overallGrade}
+					image={classData.professor?.photoURL}
 						action={
 							<>
 								{!hasUserReviewed && (
