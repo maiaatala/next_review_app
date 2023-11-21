@@ -40,7 +40,7 @@ const [isSubmitting, setIsSubmitting] = useState(false);
 			 });
 
       if (response.ok) {
-        router.push("/");
+        router.push("/review");
       }
     } catch (error) {
       console.log(error);

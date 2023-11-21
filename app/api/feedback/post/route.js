@@ -10,7 +10,6 @@ export const POST = async (req) => {
 	}
 	try {
 		const data = await req.json();
-		console.log("data", data);
 
 		if (isNaN(parseFloat(data.review))) {
 			console.log("review", data.review);

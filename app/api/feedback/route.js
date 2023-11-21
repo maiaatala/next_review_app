@@ -5,8 +5,17 @@ const prisma = new PrismaClient();
 export const GET = async () => {
 	try {
 		const feedbackWithClass = await prisma.feedbacks.findMany({
+			orderBy: [
+				{
+					createdAt: "desc",
+				},
+			],
 			include: {
-				class: true,
+				class: {
+					include: {
+						professor: true,
+					},
+				},
 			},
 		});
 

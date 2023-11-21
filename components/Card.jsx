@@ -13,7 +13,7 @@ const Card = ({ image, title, children, action, grade }) => {
 					</div>
 				</div>
 
-				{grade && <div className="copy_btn text-right">{grade}/10</div>}
+				{grade && <div className="text-right">{grade}/10</div>}
 			</div>
 
 			{children}

@@ -30,12 +30,12 @@ const Nav = () => {
 						<Link href="/classes" className="black_btn">
 							Aulas
 						</Link>
-						<Link href="/reviews" className="black_btn">
+						<Link href="/review" className="black_btn">
 							Avaliações
 						</Link>
-						<Link href="/professors" className="black_btn">
+						{/* <Link href="/professors" className="black_btn">
 							Professores
-						</Link>
+						</Link> */}
 
 						<button type="button" onClick={signOut} className="outline_btn">
 							Sair

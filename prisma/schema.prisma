@@ -56,4 +56,5 @@ model Feedbacks {
   classId   String
   review    Float
   comment   String?
+  createdAt DateTime  @default(now())
 }
