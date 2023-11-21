@@ -7,7 +7,11 @@ export const GET = async () => {
 		const classesWithProfessor = await prisma.classes.findMany({
 			include: {
 				professor: true,
-				feedbacks: true,
+				feedbacks: {
+					include: {
+						student: true,
+					},
+				},
 			},
 		});
 
